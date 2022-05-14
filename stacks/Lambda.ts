@@ -1,12 +1,18 @@
-/* eslint-disable no-new, no-unused-vars, @typescript-eslint/no-unused-vars */
-import * as sst from '@serverless-stack/resources'
+import {
+  Api,
+  ReactStaticSite,
+  Stack,
+  StackProps,
+  App,
+} from "@serverless-stack/resources";
 
-export default class Api extends sst.Stack {
-  constructor(scope: sst.App, id: string, props?: sst.StackProps) {
+
+export default class ApiStack extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
     // API to receive Discord's webhooks
-    const api = new sst.Api(this, 'DiscordHooks', {
+    const api = new Api(this, 'DiscordHooks', {
       routes: {
         'GET /health-check': {
           function: 'src/handlers/health-check.handler'
@@ -14,7 +20,15 @@ export default class Api extends sst.Stack {
       }
     })
 
+    const site = new ReactStaticSite(this, 'Website', {
+      path: 'frontend',
+      environment: {
+        REACT_APP_API_URL: api.url,
+      },
+    });
+
     this.addOutputs({
+      SiteUrl: site.url,
       ApiEndpoint: api.url,
     })
   }
