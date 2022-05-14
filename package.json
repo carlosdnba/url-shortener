@@ -17,8 +17,8 @@
     "url": "git+https://github.com/carlosdnba/url-shortener.git"
   },
   "dependencies": {
-    "@serverless-stack/cli": "1.0.0",
-    "@serverless-stack/resources": "1.0.0",
+    "@serverless-stack/cli": "1.0.5",
+    "@serverless-stack/resources": "1.0.5",
     "axios": "0.25.0",
     "debug": "^4.3.2",
     "lodash": "^4.17.21",
