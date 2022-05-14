@@ -12,10 +12,16 @@ export default class ApiStack extends Stack {
     super(scope, id, props)
 
     // API to receive Discord's webhooks
-    const api = new Api(this, 'DiscordHooks', {
+    const api = new Api(this, 'Api', {
       routes: {
         'GET /health-check': {
           function: 'src/handlers/health-check.handler'
+        },
+        'GET /shortener': {
+          function: 'src/handlers/shortener.get'
+        },
+        'POST /shortener': {
+          function: 'src/handlers/shortener.create'
         }
       }
     })

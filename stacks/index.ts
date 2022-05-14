@@ -1,7 +1,7 @@
 import * as sst from '@serverless-stack/resources'
 import { vars, buildEnvVarObject } from './helpers/env'
 import StorageStack from './Storage'
-import LambdaStack from './Lambda'
+import AppStack from './App'
 
 export default function main(app: sst.App): void {
   const storage = new StorageStack(app, 'storage')
@@ -26,5 +26,5 @@ export default function main(app: sst.App): void {
   // Adding permission for all stacks to access the storage
   app.addDefaultFunctionPermissions([table])
 
-  new LambdaStack(app, 'lambdas')
+  new AppStack(app, 'app')
 }
