@@ -22,7 +22,8 @@
     "axios": "0.25.0",
     "debug": "^4.3.2",
     "lodash": "^4.17.21",
-    "moment": "^2.29.2"
+    "moment": "^2.29.2",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
@@ -31,6 +32,7 @@
     "@types/jest": "^27.4.0",
     "@types/lodash": "^4.14.178",
     "@types/node": "^17.0.8",
+    "@types/uniqid": "^5.3.2",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "aws-sdk": "^2.1048.0",
