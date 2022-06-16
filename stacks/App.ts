@@ -18,18 +18,19 @@ export default class ApiStack extends Stack {
           function: 'src/handlers/health-check.handler'
         },
         'GET /shortener': {
-          function: 'src/handlers/shortener.get'
+          function: 'src/handlers/shortener.get',
         },
         'POST /shortener': {
           function: 'src/handlers/shortener.create'
         }
-      }
+      },
+      cors: true,
     })
 
     const site = new ReactStaticSite(this, 'Website', {
       path: 'frontend',
       environment: {
-        REACT_APP_API_URL: api.url,
+        REACT_APP_API_GATEWAY_URL: api.url,
       },
     });
 
