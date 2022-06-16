@@ -6,3 +6,8 @@ export const client = axios.create({
     'Content-Type': 'application/json',
   }
 })
+
+export const getUrl = async shortenedId => {
+  const { data } = await client.get(`/shortener?shortenedId=${shortenedId}`)
+  return data.link;
+}
