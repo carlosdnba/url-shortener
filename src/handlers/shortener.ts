@@ -15,18 +15,12 @@ export const create = async (event: EventType) => {
   console.log(event.body)
   const id = uid().slice(0, 5)
   await createLink(id, url)
-  return {
-    statusCode: 200,
-    body: id,
-  }
+  return id
 }
 
 export const get = async (event: EventType) => {
   const { shortenedId } = event.queryStringParameters
   const result = await getLink(shortenedId)
 
-  return {
-    statusCode: 200,
-    body: result,
-  }
+  return result
 }
